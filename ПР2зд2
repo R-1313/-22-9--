@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+
+int main (void) { 
+char ch;
+int y,b;
+float x;
+double z;
+ch = 'C';
+y= 2; b = 5;
+x = 5.5F;
+y = 6;
+z = ch + y+ b + x + y;
+z = (double) ch + (double) y + (double) b  + (double) x + y;
+
+printf("\n\t The apparent conversion types: %lf\n", z);
+z = sqrt((double)y/b);
+printf("\n\t z = sqrt(%d/%d) = %lf\n", y, b, z);
+printf("\n\t z = lg(%d/%d) = %lf\n", y, b, log10(z));
+printf("\n\t z = ln(%d/%d) = %lf\n", y, b, log(z));
+
+	printf("\n Press any key: ");
+	return 0;
+}
