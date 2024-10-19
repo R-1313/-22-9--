@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main ()
+{ float a,b,c;
+int m,n;
+scanf("%f%d%f%d%f",&a,&m, &b, &n, &c) ;
+printf("\na=%8.3fd=%7.2fc=%12.3e",a,b,c);
+printf("\nm=%10dn=%5d",m,n);
+}
