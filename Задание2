@@ -1,0 +1,52 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int flooring(int x)
+{
+    float y;
+    if(-10<=x<=0)
+    {
+        y = -x/2-3;
+    }
+    else
+    {
+        if (x>0&& x<=3)
+        {
+            y=-(sqrt(pow(3, 2)-pow(x,2)));
+        }
+        else
+        {
+            if (x>3 && x<=6)
+            {
+                y= sqrt(pow(3, 2)-(x-3));
+            }
+            else
+            {
+                if (x>6 && x<=8)
+                {
+                    y=0;
+                }
+                else
+                {
+                    cout <<"\nФункция не определена ";
+                }
+                }
+            }
+            }
+            return y;
+}
+int main ()
+{
+    float x, res;
+    for (int i = -10; i<=15; i++)
+    {
+        x=i;
+        cout<<"\nЗначение X: "<<x;
+        res = flooring(x);
+        cout<<"\nЗначение Y "<<res;
+        cout<<"\n-------------------";
+}
+        }
+        }
+}
