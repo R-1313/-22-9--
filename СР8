@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <numeric>  
+
+struct Employee {
+	std::string lastName;
+	double salary;
+	int experience; 
+	std::string position;
+};
+
+int main() {
+	std::vector<Employee> employees;
+	
+	employees.push_back({"Иванов", 60000.0, 5, "Инженер"});
+	employees.push_back({"Петров", 80000.0, 12, "Руководитель"});
+	employees.push_back({"Сидоров", 50000.0, 3, "Стажер"});
+	employees.push_back({"Смирнов", 70000.0, 15, "Ведущий разработчик"});
+	employees.push_back({"Кузнецов", 55000.0, 8, "Программист"});
+	
+	double totalSalary = 0.0;
+	for (const auto& employee : employees) {
+		totalSalary += employee.salary;
+	}
+	double averageSalary = (employees.empty()) ? 0.0 : totalSalary / employees.size(); // Проверка на пустой вектор
+	std::cout << "Средняя зарплата по предприятию: " << averageSalary << std::endl;
+	
+	std::cout << "\nРаботники с зарплатой ниже средней:" << std::endl;
+	for (const auto& employee : employees) {
+		if (employee.salary < averageSalary) {
+			std::cout << "  " << employee.lastName << " (" << employee.position << "): " << employee.salary << std::endl;
+		}
+	}
+	
+	std::cout << "\nРаботники со стажем более 10 лет:" << std::endl;
+	for (const auto& employee : employees) {
+		if (employee.experience > 10) {
+			std::cout << "  Фамилия: " << employee.lastName << std::endl;
+			std::cout << "  Зарплата: " << employee.salary << std::endl;
+			std::cout << "  Стаж: " << employee.experience << " лет" << std::endl;
+			std::cout << "  Должность: " << employee.position << std::endl;
+			std::cout << std::endl;
+		}
+	}
+	
+	return 0;
+}
