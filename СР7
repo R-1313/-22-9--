@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+int main() {
+	std::vector<std::string> words;
+	std::string inputWord;
+	
+	std::cout << "Введите слова, которые нужно отсортировать по алфавиту (для завершения введите 'end'):" << std::endl;
+	
+	while (true) {
+		std::cin >> inputWord;
+		if (inputWord == "end") {
+			break;
+		}
+		words.push_back(inputWord);
+	}
+	
+	std::sort(words.begin(), words.end());
+	
+	std::cout << "Отсортированные слова:" << std::endl;
+	for (const std::string& word : words) {
+		std::cout << word << std::endl;
+	}
+	
+	return 0;
+}
