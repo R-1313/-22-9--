@@ -1,0 +1,54 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+
+struct Date {
+	int day;
+	int month;
+	int year;
+};
+
+bool isAutumnDate(const Date& date) {
+	return (date.month >= 9 && date.month <= 11); 
+}
+
+int main() {
+	std::string filename;
+	std::cout << "Введите имя файла с датами: ";
+	std::cin >> filename;
+	
+	std::ifstream inputFile(filename);
+	
+	if (!inputFile.is_open()) {
+		std::cerr << "Ошибка: Не удалось открыть файл " << filename << std::endl;
+		return 1;
+	}
+	
+	std::vector<Date> dates;
+	std::string line;
+	
+	while (std::getline(inputFile, line)) {
+		std::stringstream ss(line);
+		Date date;
+		char delimiter;
+		
+		if (ss >> date.day >> delimiter >> date.month >> delimiter >> date.year) {
+			dates.push_back(date);
+		} else {
+			std::cerr << "Ошибка разбора строки: " << line << std::endl;
+		}
+	}
+	
+	inputFile.close();
+	
+	std::cout << "Осенние даты:" << std::endl;
+	for (const auto& date : dates) {
+		if (isAutumnDate(date)) {
+			std::cout << date.day << "." << date.month << "." << date.year << std::endl;
+		}
+	}
+	
+	return 0;
+}
